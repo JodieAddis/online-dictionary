@@ -3,7 +3,7 @@ import FetchData from "./components/FetchData";
 function App() {
   return (
     <>
-      <h1 className="text-indigo-600">Test fetch api</h1>
+      <h1 className="text-ElectricViolet font-extrabold">Test fetch api</h1>
       <FetchData />
     </>
   );
