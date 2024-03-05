@@ -1,22 +1,7 @@
 import { useFetch } from "../../hook/useFetch";
 
-interface DataItem {
-  word: string;
-  phonetic: string;
-  meanings: {
-    partOfSpeech: string;
-    definitions: {
-      definition: string;
-      example: string;
-      synonyms: string[];
-    }[];
-  }[];
-}
-
-const Component: React.FC = (): any => {
-  const { data, error } = useFetch<DataItem[]>({
-    url: "https://api.dictionaryapi.dev/api/v2/entries/en/bird",
-  });
+const Component: React.FC = () => {
+  const { data, error } = useFetch("cat");
 
   return (
     <>

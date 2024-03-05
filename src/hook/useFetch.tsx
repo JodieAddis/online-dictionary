@@ -1,23 +1,29 @@
 import { useState, useEffect } from "react";
 
-//l'url API a passé en props pour fetch les données
-interface useFetchProps {
-  url: string;
+interface DataItem {
+  word: string;
+  phonetic: string;
+  meanings: {
+    partOfSpeech: string;
+    definitions: {
+      definition: string;
+      example: string;
+      synonyms: string[];
+    }[];
+  }[];
 }
 
-interface ApiResponce<T> {
-  data: T;
-}
-
-export const useFetch = ({ url }: useFetchProps) => {
-  const [data, setData] = useState();
+export const useFetch = (inputText: string) => {
+  const [data, setData] = useState<DataItem[]>();
   const [error, setError] = useState();
   //   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getData() {
       try {
-        const response = await fetch(url);
+        const response = await fetch(
+          `https://api.dictionaryapi.dev/api/v2/entries/en/${inputText}`,
+        );
         const data = await response.json();
         setData(data);
       } catch (error) {
