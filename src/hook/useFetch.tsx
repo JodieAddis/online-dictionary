@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 interface DataItem {
   word: string;
   phonetic: string;
+  phonetics: {
+    audio: string;
+    sourceUrl: string;
+  }[];
   meanings: {
     partOfSpeech: string;
     definitions: {

@@ -1,4 +1,4 @@
-import MeaningWord from "../components/MeaningWord";
+import DictionaryMeaning from "../components/DictionaryMeaning";
 import Header from "../components/Header";
 
 const Page = () => (
@@ -7,7 +7,7 @@ const Page = () => (
       <Header />
     </header>
     <main className="flex justify-center">
-      <MeaningWord />
+      <DictionaryMeaning />
     </main>
     <footer className="flex justify-center">
       <p className="text-sm">Coder par Jodie Addis</p>

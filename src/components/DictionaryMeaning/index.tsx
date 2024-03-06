@@ -1,7 +1,9 @@
 import { useFetch } from "../../hook/useFetch";
 
+import DictionaryAudio from "../DictionaryAudio";
+
 const Component: React.FC = () => {
-  const { data, error } = useFetch("dog");
+  const { data, error } = useFetch("cat");
 
   return (
     <div className="mt-4 flex  w-3/6 flex-col">
@@ -13,7 +15,7 @@ const Component: React.FC = () => {
               <p className="text-lg">{data[0].phonetic}</p>
             </div>
             <div>
-              <p>AUDIO</p>
+              <DictionaryAudio />
             </div>
           </div>
           <div className="mt-6">
@@ -35,11 +37,11 @@ const Component: React.FC = () => {
                     </ul>
                   ))}
                 </ul>
-                {meaning.synonyms && (
+                {/* {meaning.synonyms && (
                   <p className="text-lg font-bold capitalize">
                     synonyms: {meaning.synonyms.join(", ")}
                   </p>
-                )}
+                )} */}
               </div>
             ))}
           </div>
