@@ -6,7 +6,7 @@ const Component: React.FC = () => {
   const { data, error } = useFetch("cat");
 
   return (
-    <div className="mt-4 flex  w-3/6 flex-col">
+    <div className="mt-4 flex w-3/6 flex-col self-center">
       {data && data[0] && (
         <>
           <div className="flex justify-between">

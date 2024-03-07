@@ -4,7 +4,6 @@ const Component = () => {
   const { data, error } = useFetch("cat");
   return (
     <>
-      <p>Audio</p>
       {data && data[0] && (
         <audio
           className="text-black"
