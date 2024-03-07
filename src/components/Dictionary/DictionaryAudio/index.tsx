@@ -1,4 +1,4 @@
-import { useFetch } from "../../hook/useFetch";
+import { useFetch } from "../../../hook/useFetch";
 
 const Component = () => {
   const { data, error } = useFetch("cat");

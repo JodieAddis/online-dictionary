@@ -2,7 +2,7 @@ import IconSearch from "../../icons/IconSearch";
 
 const Component = () => {
   return (
-    <form action="" className="my-10 flex w-3/6 self-center">
+    <form action="" className="my-10 flex w-full self-center lg:w-3/6">
       <input
         type="text"
         placeholder="Search a word..."
