@@ -1,15 +1,17 @@
+import IconLogo from "../../icons/IconLogo";
+import IconMoon from "../../icons/IconMoon";
 import SerifOptions from "../SerifOptions";
 
 const Component = () => {
   return (
-    <div className="border-Scorpion text-Black flex w-3/6 justify-between border-2 border-solid p-4">
+    <div className="text-Black flex w-full justify-between  lg:w-3/6 lg:p-4 lg:py-4">
       <div>
-        <p>Dictonary Logo</p>
+        <IconLogo />
       </div>
       <div className="flex flex-row">
         <SerifOptions />
-        <div className="bg-CodGray mx-4 h-6 w-[2px]"></div>
-        <p>Darkmode</p>
+        <div className="item-center mx-2 h-6 w-[2px] bg-CodGray lg:mx-4"></div>
+        <IconMoon />
       </div>
     </div>
   );

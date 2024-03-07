@@ -7,7 +7,7 @@ const Icon = () => (
   >
     <path
       fill="none"
-      stroke="#A445ED"
+      stroke="#7D2CF2"
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="1.5"

@@ -1,10 +1,9 @@
-import { useFetch } from "../../hook/useFetch";
+import { useFetch } from "../../../hook/useFetch";
 
 const Component = () => {
   const { data, error } = useFetch("cat");
   return (
     <>
-      <p>Audio</p>
       {data && data[0] && (
         <audio
           className="text-black"
