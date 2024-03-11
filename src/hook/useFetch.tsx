@@ -12,9 +12,12 @@ interface DataItem {
     definitions: {
       definition: string;
       example: string;
-      synonyms: string[];
+    }[];
+    synonyms: {
+      synonym: string;
     }[];
   }[];
+  sourceUrls: string;
 }
 
 export const useFetch = (inputText: string) => {
