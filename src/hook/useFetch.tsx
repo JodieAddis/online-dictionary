@@ -13,7 +13,7 @@ interface DataItem {
       definition: string;
       example: string;
     }[];
-    synonyms: string []; 
+    synonyms: string[];
   }[];
   sourceUrls: string;
 }
@@ -36,7 +36,7 @@ export const useFetch = (inputText: string) => {
       }
     }
     getData();
-  }, []);
+  }, [inputText]);
 
   return { data, error };
 };
