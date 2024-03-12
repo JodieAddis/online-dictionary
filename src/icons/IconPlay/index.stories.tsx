@@ -1,0 +1,15 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import IconPlay from ".";
+
+const meta = {
+  title: "icons/ IconPlay",
+  component: IconPlay,
+} satisfies Meta<typeof IconPlay>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const AudioPlayIcon: Story = {
+  name: "Icon used as a button to activate the audio of the audio player",
+};
