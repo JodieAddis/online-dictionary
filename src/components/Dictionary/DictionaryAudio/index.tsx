@@ -1,13 +1,18 @@
 import { useFetch } from "../../../hook/useFetch";
 
-const Component = () => {
+interface AudioUrl {
+  srcUrl: string;
+}
+
+const Component = ({ srcUrl }: AudioUrl) => {
   const { data, error } = useFetch("cat");
   return (
     <>
       {data && data[0] && (
         <audio
           className="text-black"
-          src={data[0].phonetics[0].audio}
+          // src={data[0].phonetics[0].audio}
+          src={srcUrl}
           controls
         ></audio>
       )}

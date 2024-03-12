@@ -1,7 +1,5 @@
-import DictionaryMeaning from "../components/Dictionary/DictionaryMeaning";
 import Header from "../components/Header";
-import InputText from "../components/InputText";
-import DictonarySource from "../components/Dictionary/DictonarySource";
+import SearchContainer from "../container/SearchContainer";
 
 const Page = () => (
   <>
@@ -9,9 +7,10 @@ const Page = () => (
       <Header />
     </header>
     <main className="mx-8 flex flex-col justify-center lg:mx-0">
-      <InputText />
+      {/* <InputText />
       <DictionaryMeaning />
-      <DictonarySource />
+      <DictonarySource /> */}
+      <SearchContainer />
     </main>
     <footer className="mb-4 mt-20 flex justify-center">
       <p className="text-sm">Coder par Jodie Addis</p>
