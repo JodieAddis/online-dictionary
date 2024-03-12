@@ -30,9 +30,10 @@ const Container = () => {
           </>
         )}
       </div>
-      <div>
+      <div className="flex justify-center">
         <DictionarySynonym />
       </div>
+      <div className="my-8 flex h-[1px] self-center rounded-full bg-SilverChalice lg:w-3/6"></div>
       <DictionarySource />
     </>
   );

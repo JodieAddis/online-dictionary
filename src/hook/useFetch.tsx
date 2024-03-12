@@ -13,9 +13,7 @@ interface DataItem {
       definition: string;
       example: string;
     }[];
-    synonyms: {
-      synonym: string;
-    }[];
+    synonyms: string []; 
   }[];
   sourceUrls: string;
 }
