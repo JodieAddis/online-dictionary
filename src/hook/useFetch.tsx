@@ -32,7 +32,7 @@ export const useFetch = (inputText: string) => {
         const data = await response.json();
         setData(data);
       } catch (error) {
-        console.log("Error");
+        // console.log("Error");
       }
     }
     getData();
