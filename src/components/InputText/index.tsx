@@ -4,7 +4,6 @@ import IconSearch from "../../icons/IconSearch";
 const Component = () => {
   const [currentWord, setCurrentWord] = useState<string>("");
   const input = document.querySelector("#input-text") as HTMLInputElement;
-  // console.log(currentWord);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();

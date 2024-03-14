@@ -1,9 +1,5 @@
 import { useFetch } from "../../../hook/useFetch";
 
-// interface AudioUrl {
-//   srcUrl: string;
-// }
-
 interface WordInputProps {
   wordInput: string;
 }
@@ -16,7 +12,6 @@ const Component = ({ wordInput }: WordInputProps) => {
         <audio
           className="text-black"
           src={data[0].phonetics[0].audio}
-          // src={srcUrl}
           controls
         ></audio>
       )}

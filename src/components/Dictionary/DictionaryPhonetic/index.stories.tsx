@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import DictionaryDefinition from ".";
+import DictionaryPhonetic from ".";
 
 const meta = {
-  title: "components/Dictionary/DictionaryDefinition",
-  component: DictionaryDefinition,
+  title: "components/Dictionary/DictionaryPhonetic",
+  component: DictionaryPhonetic,
   tags: ["autodocs"],
   argTypes: {
     wordInput: { description: "Value entered by the user" },
   },
-} satisfies Meta<typeof DictionaryDefinition>;
+} satisfies Meta<typeof DictionaryPhonetic>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const WordDefinition: Story = {
-  name: "Definition of the word chosen by the user",
+  name: "Display the word of the word chosen by the user, and the phonetic of this word",
   args: {
     wordInput: "Cat",
   },
