@@ -13,7 +13,7 @@ interface DataItem {
       definition: string;
       example: string;
     }[];
-    synonyms: string []; 
+    synonyms: string[];
   }[];
   sourceUrls: string;
 }
@@ -32,11 +32,11 @@ export const useFetch = (inputText: string) => {
         const data = await response.json();
         setData(data);
       } catch (error) {
-        console.log("Error");
+        // console.log("Error");
       }
     }
     getData();
-  }, []);
+  }, [inputText]);
 
   return { data, error };
 };

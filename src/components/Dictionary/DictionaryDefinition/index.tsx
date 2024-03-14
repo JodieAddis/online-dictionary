@@ -1,7 +1,11 @@
 import { useFetch } from "../../../hook/useFetch";
 
-const Component = () => {
-  const { data, error } = useFetch("cat");
+interface WordInputProps {
+  wordInput: string;
+}
+
+const Component = ({ wordInput }: WordInputProps) => {
+  const { data, error } = useFetch(wordInput);
   return (
     <div className="mt-8 lg:mt-6">
       {data &&
