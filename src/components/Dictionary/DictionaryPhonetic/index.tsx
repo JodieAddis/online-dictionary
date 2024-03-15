@@ -1,9 +1,5 @@
 import { useFetch } from "../../../hook/useFetch";
-
-// interface WordPhoneticProps {
-//   word: string;
-//   phonetic: string;
-// }
+import Paragraph from "../../../typographies/Paragraph";
 
 interface WordInputProps {
   wordInput: string;
@@ -15,18 +11,18 @@ const Component = ({ wordInput }: WordInputProps) => {
     <>
       {data && data[0] && (
         <>
-          <p className="text-3xl font-medium text-Shark lg:text-6xl lg:font-bold">
-            {data[0].word}
-          </p>
-          <p className="text-xl text-ElectricViolet lg:text-lg">
-            {data[0].phonetic}
-          </p>
+          <Paragraph
+            content={data[0].word}
+            css="text-3xl font-medium text-Shark lg:text-6xl lg:font-bold"
+          />
+          {data[0].phonetic ? (
+            <Paragraph
+              content={data[0].phonetic}
+              css="text-xl text-ElectricViolet lg:text-lg"
+            />
+          ) : null}
         </>
       )}
-      {/* <p className="text-3xl font-medium text-Shark lg:text-6xl lg:font-bold">
-        {word}
-      </p>
-      <p className="text-xl text-ElectricViolet lg:text-lg">{phonetic}</p> */}
     </>
   );
 };

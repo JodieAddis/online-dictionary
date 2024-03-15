@@ -52,8 +52,8 @@ const Container = () => {
           <DictionaryDefinition wordInput={currentWord} />
         </>
       </div>
-      <div className="flex justify-center">
-        <DictionarySynonym wordInput={"test"} />
+      <div>
+        <DictionarySynonym wordInput={currentWord} />
       </div>
       <div className="my-8 flex h-[1px] self-center rounded-full bg-SilverChalice lg:w-3/6"></div>
       <DictionarySource />

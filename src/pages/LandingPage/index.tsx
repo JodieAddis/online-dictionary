@@ -1,5 +1,5 @@
-import Header from "../components/Header";
-import SearchContainer from "../container/SearchContainer";
+import Header from "../../components/Header";
+import SearchContainer from "../../container/SearchContainer";
 
 const Page = () => (
   <>
