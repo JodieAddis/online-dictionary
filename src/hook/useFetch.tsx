@@ -3,8 +3,8 @@ import { DataItem } from "../types";
 
 export const useFetch = (inputText: string) => {
   const [data, setData] = useState<DataItem[]>();
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -35,5 +35,5 @@ export const useFetch = (inputText: string) => {
     };
   }, [inputText]);
 
-  return { data, isLoading };
+  return { data, isLoading, error };
 };

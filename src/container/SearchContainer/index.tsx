@@ -11,13 +11,15 @@ import { useFetch } from "../../hook/useFetch";
 
 const Container = () => {
   const [currentWord, setCurrentWord] = useState<string>("");
-  const [errorAlert, setErrorAlert] = useState<boolean>(false);
-  const { data, isLoading } = useFetch(currentWord);
+  const { data, isLoading, error } = useFetch(currentWord);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const [errorAlert, setErrorAlert] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (inputRef.current !== null) {
+
+    if (inputRef.current !== null && inputRef.current.value.trim() !== "") {
       console.log(inputRef.current.value);
       setCurrentWord(inputRef.current.value);
       setErrorAlert(false);
@@ -48,9 +50,7 @@ const Container = () => {
       </form>
 
       {errorAlert && (
-        <p className="text-Crimson">
-          Input field empty, please write something
-        </p>
+        <p className="text-Crimson">Empty field, please write something</p>
       )}
 
       {isLoading && (
