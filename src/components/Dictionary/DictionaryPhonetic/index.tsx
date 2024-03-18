@@ -1,28 +1,25 @@
-import { useFetch } from "../../../hook/useFetch";
+import Heading from "../../../typographies/Heading";
 import Paragraph from "../../../typographies/Paragraph";
 
-interface WordInputProps {
-  wordInput: string;
+interface ItemData {
+  word: string;
+  phonetic: string;
 }
 
-const Component = ({ wordInput }: WordInputProps) => {
-  const { data } = useFetch(wordInput);
+const Component = ({ word, phonetic }: ItemData) => {
   return (
     <>
-      {data && data[0] && (
-        <>
-          <Paragraph
-            content={data[0].word}
-            css="text-3xl font-medium text-Shark lg:text-6xl lg:font-bold"
-          />
-          {data[0].phonetic ? (
-            <Paragraph
-              content={data[0].phonetic}
-              css="text-xl text-ElectricViolet lg:text-lg"
-            />
-          ) : null}
-        </>
-      )}
+      <Heading
+        kind="h1"
+        content={word}
+        css="text-3xl font-medium text-Shark lg:text-6xl lg:font-bold"
+      />
+      {phonetic ? (
+        <Paragraph
+          content={phonetic}
+          css="text-xl text-ElectricViolet lg:text-lg"
+        />
+      ) : null}
     </>
   );
 };

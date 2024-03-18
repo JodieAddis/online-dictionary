@@ -6,11 +6,13 @@ import DictionarySynonym from "../../components/Dictionary/DictionarySynonym";
 
 import { FormEvent, useRef, useState } from "react";
 import IconSearch from "../../icons/IconSearch";
+import Loading from "../../components/Loading";
+import { useFetch } from "../../hook/useFetch";
 
 const Container = () => {
   const [currentWord, setCurrentWord] = useState<string>("");
-
   const inputRef = useRef<HTMLInputElement>(null);
+  const { data } = useFetch(currentWord);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,7 +33,7 @@ const Container = () => {
           type="text"
           placeholder="Search a word..."
           id="input-text"
-          className="w-full rounded-l-lg bg-Gallery py-4 font-bold placeholder-SilverChalice placeholder:pl-5"
+          className="w-full rounded-l-lg bg-Gallery py-4 font-bold placeholder-SilverChalice outline-none placeholder:pl-5"
           defaultValue={currentWord}
           ref={inputRef}
         />
@@ -39,24 +41,35 @@ const Container = () => {
           <IconSearch />
         </button>
       </form>
-      <div className="mx-4 mt-4 flex w-full flex-col self-center lg:mx-0 lg:w-3/6">
+      {data && data[0] && (
         <>
-          <div className="flex justify-between">
-            <div>
-              <DictionaryPhonetic wordInput={currentWord} />
-            </div>
-            <div>
-              <DictionaryAudio wordInput={currentWord} />
-            </div>
+          <div className="mx-4 mt-4 flex w-full flex-col self-center lg:mx-0 lg:w-3/6">
+            <>
+              {/* <div className="flex justify-center">
+            <Loading />
+          </div> */}
+
+              <div className="flex justify-between">
+                <div>
+                  <DictionaryPhonetic
+                    word={data[0].word}
+                    phonetic={data[0].phonetic}
+                  />
+                </div>
+                <div>
+                  <DictionaryAudio audio={data[0].phonetics[0].audio} />
+                </div>
+              </div>
+              <DictionaryDefinition meanings={data[0].meanings} />
+            </>
           </div>
-          <DictionaryDefinition wordInput={currentWord} />
+          <div>
+            <DictionarySynonym meanings={data[0].meanings} />
+          </div>
+          <div className="my-8 flex h-[1px] self-center rounded-full bg-SilverChalice lg:w-3/6"></div>
+          <DictionarySource sourceUrls={data[0].sourceUrls} />
         </>
-      </div>
-      <div>
-        <DictionarySynonym wordInput={currentWord} />
-      </div>
-      <div className="my-8 flex h-[1px] self-center rounded-full bg-SilverChalice lg:w-3/6"></div>
-      <DictionarySource />
+      )}
     </>
   );
 };

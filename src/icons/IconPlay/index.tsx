@@ -1,9 +1,14 @@
-const Icon = () => (
+interface AudioRef {
+  onClick: () => void;
+}
+
+const Icon = ({ onClick }: AudioRef) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="75"
     height="75"
     viewBox="0 0 75 75"
+    onClick={onClick}
   >
     <g fill="#A445ED" fillRule="evenodd">
       <circle cx="37.5" cy="37.5" r="37.5" opacity=".25" />

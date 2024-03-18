@@ -1,21 +1,23 @@
-import { useFetch } from "../../../hook/useFetch";
+import { useState, useRef } from "react";
+import IconPlay from "../../../icons/IconPlay";
 
-interface WordInputProps {
-  wordInput: string;
+interface AudioItem {
+  audio: string;
 }
 
-const Component = ({ wordInput }: WordInputProps) => {
-  const { data } = useFetch(wordInput);
+const Component = ({ audio }: AudioItem) => {
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const audioRef = useRef<HTMLAudioElement>(new Audio());
+
+  const toggleAudio = () => {
+    isPlaying ? audioRef.current.pause() : audioRef.current.play();
+    setIsPlaying((prevState) => !prevState);
+  };
   return (
-    <>
-      {data && data[0] && (
-        <audio
-          className="text-black"
-          src={data[0].phonetics[0].audio}
-          controls
-        ></audio>
-      )}
-    </>
+    <div className="cursor-pointer">
+      <audio className="text-black" src={audio} ref={audioRef}></audio>
+      <IconPlay onClick={toggleAudio} />
+    </div>
   );
 };
 

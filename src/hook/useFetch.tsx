@@ -1,42 +1,39 @@
 import { useState, useEffect } from "react";
-
-interface DataItem {
-  word: string;
-  phonetic: string;
-  phonetics: {
-    audio: string;
-    sourceUrl: string;
-  }[];
-  meanings: {
-    partOfSpeech: string;
-    definitions: {
-      definition: string;
-      example: string;
-    }[];
-    synonyms: string[];
-  }[];
-  sourceUrls: string;
-}
+import { DataItem } from "../types";
 
 export const useFetch = (inputText: string) => {
   const [data, setData] = useState<DataItem[]>();
-  const [error, setError] = useState();
-  //   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function getData() {
+    const getData = async () => {
       try {
+        setIsLoading(true);
         const response = await fetch(
           `https://api.dictionaryapi.dev/api/v2/entries/en/${inputText}`,
         );
+        if (!response.ok) {
+          throw new Error(`Fail to get data: ${response.status}`);
+        }
         const data = await response.json();
         setData(data);
+        setIsLoading(false);
       } catch (error) {
-        // console.log("Error");
+        setError(true);
+      } finally {
+        setIsLoading(false);
       }
-    }
+    };
     getData();
+
+    // fonction de nettoyage : reprise des states initiaux
+    return (): void => {
+      // setData([]);
+      setError(false);
+      setIsLoading(false);
+    };
   }, [inputText]);
 
-  return { data, error };
+  return { data, isLoading };
 };
