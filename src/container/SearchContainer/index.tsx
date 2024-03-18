@@ -11,14 +11,19 @@ import { useFetch } from "../../hook/useFetch";
 
 const Container = () => {
   const [currentWord, setCurrentWord] = useState<string>("");
+  const [errorAlert, setErrorAlert] = useState<boolean>(false);
+  const { data, isLoading } = useFetch(currentWord);
   const inputRef = useRef<HTMLInputElement>(null);
-  const { data } = useFetch(currentWord);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (inputRef.current !== null) {
       console.log(inputRef.current.value);
       setCurrentWord(inputRef.current.value);
+      setErrorAlert(false);
+    } else {
+      setErrorAlert(true);
+      console.log("error message");
     }
   };
 
@@ -41,14 +46,23 @@ const Container = () => {
           <IconSearch />
         </button>
       </form>
+
+      {errorAlert && (
+        <p className="text-Crimson">
+          Input field empty, please write something
+        </p>
+      )}
+
+      {isLoading && (
+        <div className="flex justify-center">
+          <Loading />
+        </div>
+      )}
+
       {data && data[0] && (
         <>
           <div className="mx-4 mt-4 flex w-full flex-col self-center lg:mx-0 lg:w-3/6">
             <>
-              {/* <div className="flex justify-center">
-            <Loading />
-          </div> */}
-
               <div className="flex justify-between">
                 <div>
                   <DictionaryPhonetic
