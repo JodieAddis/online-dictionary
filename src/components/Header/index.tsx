@@ -1,6 +1,7 @@
 import IconLogo from "../../icons/IconLogo";
 import IconMoon from "../../icons/IconMoon";
 import SerifOptions from "../SerifOptions";
+import ToggleButton from "../ToggleButton";
 
 const Component = () => {
   return (
@@ -11,7 +12,8 @@ const Component = () => {
       <div className="flex flex-row">
         <SerifOptions />
         <div className="item-center mx-2 h-6 w-[2px] bg-CodGray lg:mx-4"></div>
-        <IconMoon />
+        {/* <IconMoon /> */}
+        <ToggleButton />
       </div>
     </div>
   );
