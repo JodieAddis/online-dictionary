@@ -29,7 +29,7 @@ const Container = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col justify-center">
       <form
         className="my-10 flex w-full self-center lg:w-3/6"
         onSubmit={handleSubmit}
@@ -38,7 +38,7 @@ const Container = () => {
           type="text"
           placeholder="Search a word..."
           id="input-text"
-          className={`${theme == false ? "bg-Gallery text-Shark" : "bg-Shark text-white"} w-full rounded-l-lg  py-4 font-bold placeholder-SilverChalice outline-none placeholder:pl-5`}
+          className={`${theme == false ? "bg-Gallery text-Shark" : "bg-Shark text-white"} w-full rounded-l-lg py-4  pl-5 font-bold placeholder-SilverChalice outline-none`}
           defaultValue={currentWord}
           ref={inputRef}
         />
@@ -50,12 +50,14 @@ const Container = () => {
         </button>
       </form>
 
-      {errorAlert && (
-        <p className="text-Crimson">Empty field, please write something</p>
-      )}
+      <div className="flex w-full self-center lg:w-3/6">
+        {errorAlert && (
+          <p className="text-Crimson">Empty field, please write something</p>
+        )}
+      </div>
 
       {currentWord && <DictionaryContainer currentWord={currentWord} />}
-    </>
+    </div>
   );
 };
 

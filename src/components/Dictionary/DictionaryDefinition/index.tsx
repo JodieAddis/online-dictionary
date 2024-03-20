@@ -44,13 +44,13 @@ const Component = ({ meanings }: MeaningItem) => {
                 className={`${theme == false ? " text-Shark" : "text-white"} marker:text-ElectricViolet`}
               >
                 <List
-                  css="font-base my-2 ml-5 list-disc pl-3 lg:ml-10"
+                  css="font-base mt-4 ml-5 list-disc pl-3 lg:ml-10"
                   content={definition.definition}
                 />
                 {definition.example ? (
                   <List
-                    css="ml-5 text-SilverChalice"
-                    content={definition.example}
+                    css="ml-6 text-SilverChalice"
+                    content={`" ${definition.example} "`}
                   />
                 ) : null}
               </ul>
