@@ -8,6 +8,7 @@ import { FormEvent, useRef, useState } from "react";
 import IconSearch from "../../icons/IconSearch";
 import Loading from "../../components/Loading";
 import { useFetch } from "../../hook/useFetch";
+import useTheme from "../../hook/useTheme";
 
 const Container = () => {
   const [currentWord, setCurrentWord] = useState<string>("");
@@ -15,6 +16,8 @@ const Container = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [errorAlert, setErrorAlert] = useState(false);
+
+  const { theme } = useTheme();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -40,11 +43,14 @@ const Container = () => {
           type="text"
           placeholder="Search a word..."
           id="input-text"
-          className="w-full rounded-l-lg bg-Gallery py-4 font-bold placeholder-SilverChalice outline-none placeholder:pl-5"
+          className={`${theme == false ? "bg-Gallery text-Shark" : "bg-Shark text-white"} w-full rounded-l-lg  py-4 font-bold placeholder-SilverChalice outline-none placeholder:pl-5`}
           defaultValue={currentWord}
           ref={inputRef}
         />
-        <button className="rounded-r-lg bg-Gallery pr-5" type="submit">
+        <button
+          className={`${theme == false ? "bg-Gallery" : "bg-Shark"} rounded-r-lg  pr-5`}
+          type="submit"
+        >
           <IconSearch />
         </button>
       </form>
