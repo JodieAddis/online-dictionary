@@ -27,9 +27,8 @@ export const useFetch = (inputText: string) => {
     };
     getData();
 
-    // fonction de nettoyage : reprise des states initiaux
     return (): void => {
-      // setData([]);
+      setData([]);
       setError(false);
       setIsLoading(false);
     };
