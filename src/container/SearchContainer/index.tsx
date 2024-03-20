@@ -8,6 +8,7 @@ import { FormEvent, useRef, useState } from "react";
 import IconSearch from "../../icons/IconSearch";
 import Loading from "../../components/Loading";
 import { useFetch } from "../../hook/useFetch";
+import ErrorMessage from "../../components/ErrorMessage";
 import useTheme from "../../hook/useTheme";
 
 const Container = () => {
@@ -54,6 +55,7 @@ const Container = () => {
           <IconSearch />
         </button>
       </form>
+      {error && <ErrorMessage />}
 
       {errorAlert && (
         <p className="text-Crimson">Empty field, please write something</p>
