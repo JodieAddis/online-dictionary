@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        mineShaft: "#212121",
         Shark: "#2E3238", //dark grey
         Scorpion: "#575757", //grey
         SilverChalice: "#A3A3A3", //light grey
@@ -11,7 +12,7 @@ export default {
         White: "FFFFFF",
         ElectricViolet: "#7D2CF2",
         Crimson: "#DC1E1E",
-        CodGray: "#0C0C0C",
+        CodGray: "#0C0C0C", //Black
       },
     },
   },

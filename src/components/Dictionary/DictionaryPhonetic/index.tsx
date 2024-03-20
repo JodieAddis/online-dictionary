@@ -1,3 +1,4 @@
+import useTheme from "../../../hook/useTheme";
 import Heading from "../../../typographies/Heading";
 import Paragraph from "../../../typographies/Paragraph";
 
@@ -7,12 +8,17 @@ interface ItemData {
 }
 
 const Component = ({ word, phonetic }: ItemData) => {
+  const { theme } = useTheme();
   return (
     <>
       <Heading
         kind="h1"
         content={word}
-        css="text-3xl font-medium text-Shark lg:text-6xl lg:font-bold"
+        css={`
+          ${theme == false
+            ? "text-Shark"
+            : "text-white"} text-3xl font-medium  lg:text-6xl lg:font-bold
+        `}
       />
       {phonetic ? (
         <Paragraph

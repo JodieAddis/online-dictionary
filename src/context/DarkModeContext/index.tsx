@@ -9,7 +9,6 @@ interface DarkModeProviderProps {
   children: ReactNode;
 }
 
-//Création du context:
 export const DarkModeContext = createContext<DarkModeContextType>({
   theme: false,
   toggleTheme: () => {},
@@ -18,11 +17,15 @@ export const DarkModeContext = createContext<DarkModeContextType>({
 export const DarkModeProvider: React.FC<DarkModeProviderProps> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState<boolean>(false); //false = mis sur clair par défaut
+  const [theme, setTheme] = useState<boolean>(false);
 
   const toggleTheme = (): void => {
-    setTheme(!theme);
+    setTheme((prevTheme) => !prevTheme);
   };
+
+  theme
+    ? document.body.classList.add("bg-mineShaft")
+    : document.body.classList.remove("bg-mineShaft");
 
   return (
     <DarkModeContext.Provider value={{ theme, toggleTheme }}>

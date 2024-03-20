@@ -1,3 +1,4 @@
+import useTheme from "../../../hook/useTheme";
 import List from "../../../typographies/List";
 import Paragraph from "../../../typographies/Paragraph";
 
@@ -8,11 +9,16 @@ interface SynonymItem {
 }
 
 const Component = ({ meanings }: SynonymItem) => {
+  const { theme } = useTheme();
   return (
     <div className="mt-4 flex flex-row lg:w-3/6">
       <Paragraph
         content="synonym"
-        css="mr-3 font-bold text-SilverChalice capitalize"
+        css={`
+          ${theme == false
+            ? "text-SilverChalice"
+            : "text-white"} mr-3 font-bold capitalize
+        `}
       />
       {meanings.map((meaning, index) => (
         <ul className="flex flex-row flex-wrap" key={index}>
