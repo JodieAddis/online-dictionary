@@ -1,9 +1,9 @@
-import { useState, CSSProperties } from "react";
+import { useState } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 
 const Component = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [color, setColor] = useState<string>("#7D2CF2");
+  const [isLoading] = useState(true);
+  const [color] = useState<string>("#7D2CF2");
   return (
     <>
       <PulseLoader
