@@ -1,41 +1,63 @@
-import DictionaryAudio from "../../components/Dictionary/DictionaryAudio";
-import DictionaryDefinition from "../../components/Dictionary/DictionaryDefinition";
-import DictionaryPhonetic from "../../components/Dictionary/DictionaryPhonetic";
-import DictionarySource from "../../components/Dictionary/DictionarySource";
-import DictionarySynonym from "../../components/Dictionary/DictionarySynonym";
-import InputText from "../../components/InputText";
-
-import { useFetch } from "../../hook/useFetch";
+import { FormEvent, useRef, useState } from "react";
+import IconSearch from "../../icons/IconSearch";
+import useTheme from "../../hook/useTheme";
+import DictionaryContainer from "../../components/Dictionary/DictionaryContainer";
 
 const Container = () => {
-  const { data, error } = useFetch("cat");
+  const [currentWord, setCurrentWord] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [errorAlert, setErrorAlert] = useState(false);
+
+  const { theme } = useTheme();
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (
+      inputRef.current &&
+      inputRef.current !== null &&
+      inputRef.current.value.trim() !== ""
+    ) {
+      console.log(inputRef.current.value);
+      setCurrentWord(inputRef.current.value);
+      setErrorAlert(false);
+    } else {
+      setErrorAlert(true);
+      console.log("error message");
+    }
+  };
+
   return (
-    <>
-      <InputText />
-      <div className="mx-4 mt-4 flex w-full flex-col self-center lg:mx-0 lg:w-3/6">
-        {data && data[0] && (
-          <>
-            <div className="flex justify-between">
-              <div>
-                <DictionaryPhonetic
-                  word={data[0].word}
-                  phonetic={data[0].phonetic}
-                />
-              </div>
-              <div>
-                <DictionaryAudio srcUrl={data[0].phonetics[0].audio} />
-              </div>
-            </div>
-            <DictionaryDefinition />
-          </>
+    <div className="flex flex-col justify-center">
+      <form
+        className="my-10 flex w-full self-center lg:w-3/6"
+        onSubmit={handleSubmit}
+      >
+        <input
+          type="text"
+          placeholder="Search a word..."
+          id="input-text"
+          className={`${theme == false ? "bg-Gallery text-Shark" : "bg-Shark text-white"} w-full rounded-l-lg py-4  pl-5 font-bold placeholder-SilverChalice outline-none`}
+          defaultValue={currentWord}
+          ref={inputRef}
+        />
+        <button
+          className={`${theme == false ? "bg-Gallery" : "bg-Shark"} rounded-r-lg  pr-5`}
+          type="submit"
+        >
+          <IconSearch />
+        </button>
+      </form>
+
+      <div className="flex w-full self-center lg:w-3/6">
+        {errorAlert && (
+          <p className="text-Crimson">Empty field, please write something</p>
         )}
       </div>
-      <div className="flex justify-center">
-        <DictionarySynonym />
-      </div>
-      <div className="my-8 flex h-[1px] self-center rounded-full bg-SilverChalice lg:w-3/6"></div>
-      <DictionarySource />
-    </>
+
+      {currentWord && <DictionaryContainer currentWord={currentWord} />}
+    </div>
   );
 };
 

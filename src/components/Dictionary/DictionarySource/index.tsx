@@ -1,21 +1,26 @@
+import useTheme from "../../../hook/useTheme";
 import IconNewWindow from "../../../icons/IconNewWindow";
-import { useFetch } from "../../../hook/useFetch";
+import Paragraph from "../../../typographies/Paragraph";
 
-const Component = () => {
-  const { data, error } = useFetch("cat");
+interface SourceItem {
+  sourceUrls: string;
+}
+
+const Component = ({ sourceUrls }: SourceItem) => {
+  const { theme } = useTheme();
   return (
-    <div className="flex flex-row self-center text-sm text-Shark lg:w-3/6">
-      <p className="mr-4">Source</p>
-      {data && data[0] && (
-        <div className="flex flex-row">
-          <a href={data[0].sourceUrls} className="underline">
-            https://en.wiktionary.org/wiki/cat
-          </a>
-          <a href={data[0].sourceUrls} className="ml-2 self-center">
-            <IconNewWindow />
-          </a>
-        </div>
-      )}
+    <div
+      className={`${theme == false ? "text-Shark" : "text-white"} flex flex-row self-center text-sm lg:w-3/6 `}
+    >
+      <Paragraph content="source" css="mr-4 capitalize" />
+      <div className="flex flex-row">
+        <a href={sourceUrls} className="underline">
+          {sourceUrls}
+        </a>
+        <a href={sourceUrls} className="ml-2 self-center">
+          <IconNewWindow />
+        </a>
+      </div>
     </div>
   );
 };
