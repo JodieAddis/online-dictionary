@@ -4,7 +4,7 @@ export type FontType = "serif" | "sans-serif" | "mono";
 
 const class_serif = "font-txt-serif";
 const class_sans_serif = "font-txt-sans";
-const class_mono = "font-text-mono";
+const class_mono = "font-txt-mono";
 
 interface FontContextType {
   font: FontType;
@@ -33,11 +33,8 @@ export const FontProvider: React.FC<FontProviderProps> = ({ children }) => {
       case "sans-serif":
         document.body.classList.add(class_sans_serif);
         break;
-      case "mono":
-        document.body.classList.add(class_mono);
-        break;
       default:
-        document.body.classList.add(class_serif);
+        document.body.classList.add(class_mono);
         break;
     }
   };
