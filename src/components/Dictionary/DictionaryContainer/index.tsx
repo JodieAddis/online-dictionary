@@ -39,11 +39,11 @@ const Component = ({ currentWord }: CurrentWordProps) => {
               </div>
               <DictionaryDefinition meanings={data[0].meanings} />
             </>
+            <div>
+              <DictionarySynonym meanings={data[0].meanings} />
+            </div>
           </div>
-          <div>
-            <DictionarySynonym meanings={data[0].meanings} />
-          </div>
-          <div className="my-8 flex h-[1px] self-center rounded-full bg-SilverChalice lg:w-3/6"></div>
+          <div className="my-6 flex h-[1px] self-center rounded-full bg-SilverChalice lg:w-3/6"></div>
           <DictionarySource sourceUrls={data[0].sourceUrls} />
         </>
       )}

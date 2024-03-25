@@ -1,6 +1,6 @@
 import useTheme from "../../hook/useTheme";
 import IconLogo from "../../icons/IconLogo";
-import SerifOptions from "../SerifOptions";
+import FontOptions from "../FontOptions";
 import ToggleButton from "../ToggleButton";
 
 const Component = () => {
@@ -13,9 +13,9 @@ const Component = () => {
         <IconLogo />
       </div>
       <div className="flex flex-row">
-        <SerifOptions />
+        <FontOptions />
         <div
-          className={`${theme == false ? "bg-SilverChalice" : "bg-white"} item-center mx-2 h-6 w-[2px]  lg:mx-4`}
+          className={`${theme == false ? "bg-SilverChalice" : "bg-white"} mx-2 h-6 w-[2px] self-center  lg:mx-4`}
         ></div>
         <ToggleButton />
       </div>
