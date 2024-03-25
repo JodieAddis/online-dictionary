@@ -11,7 +11,7 @@ interface SynonymItem {
 const Component = ({ meanings }: SynonymItem) => {
   const { theme } = useTheme();
   return (
-    <div className="mt-4 flex flex-row lg:w-3/6">
+    <div className="mt-4 flex flex-row">
       <Paragraph
         content="synonym"
         css={`
