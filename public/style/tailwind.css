@@ -14,3 +14,12 @@ html {
 .font_option {
   @apply cursor-pointer px-12 capitalize;
 }
+.font-txt-serif {
+  @apply font-serif;
+}
+.font-txt-sans {
+  @apply font-sans;
+}
+.font-txt-mono {
+  @apply font-mono;
+}

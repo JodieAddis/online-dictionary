@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useTheme from "../../hook/useTheme";
 import IconDownArrow from "../../icons/IconDownArrow";
 import List from "../../typographies/List";
+import { FontContext, FontType } from "../../context/FontContext";
 
 const Component = () => {
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFont, setSelectedFont] = useState("serif");
+  const { setFont } = useContext(FontContext);
 
-  const handleOptionClick = (font: string) => {
+  const handleOptionClick = (font: FontType) => {
     setSelectedFont(font);
     setIsOpen(false);
+    setFont(font);
   };
 
   return (
@@ -28,17 +31,17 @@ const Component = () => {
           >
             <List
               content="serif"
-              css="font_option pt-3"
+              css="font_option pt-3 font-serif"
               onclick={() => handleOptionClick("serif")}
             />
             <List
               content="sans-serif"
-              css="font_option py-3"
+              css="font_option py-3 font-sans"
               onclick={() => handleOptionClick("sans-serif")}
             />
             <List
               content="mono"
-              css="font_option pb-3"
+              css="font_option pb-3 font-mono"
               onclick={() => handleOptionClick("mono")}
             />
           </ul>
@@ -49,14 +52,3 @@ const Component = () => {
 };
 
 export default Component;
-
-{
-  /* <select
-        id=""
-        className={`${theme == false ? "bg-white text-Shark" : "bg-mineShaft text-white "} text-center capitalize outline-none `}
-      >
-        <option>serif</option>
-        <option>sans-serif</option>
-        <option>mono</option>
-      </select> */
-}
