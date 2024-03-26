@@ -34,7 +34,13 @@ const Component = ({ currentWord }: CurrentWordProps) => {
                   />
                 </div>
                 <div>
-                  <DictionaryAudio audio={data[0].phonetics[0].audio} />
+                  <DictionaryAudio
+                    audio={
+                      data[0].phonetics.length > 0
+                        ? data[0].phonetics.find((entry) => entry.audio)?.audio
+                        : undefined
+                    }
+                  />
                 </div>
               </div>
               <DictionaryDefinition meanings={data[0].meanings} />

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import IconPlay from "../../../icons/IconPlay";
 
 interface AudioItem {
-  audio: string;
+  audio: string | undefined;
 }
 
 const Component = ({ audio }: AudioItem) => {
