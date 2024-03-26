@@ -9,7 +9,7 @@ This application features 2 contexts:
 - a dark mode
 - a font choice for the page
 
-All stories are hosted on Chromatic at this URL
+All stories are hosted on Chromatic at this [URL](https://66028c5f30a593dce34bd401-kelrxyxbxg.chromatic.com/)
 
 ![Dictionary screen](public/assets/img/dictionary-desktop.png)
 
