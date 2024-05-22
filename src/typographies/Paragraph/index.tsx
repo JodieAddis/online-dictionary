@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
+
 interface ParagraphProps {
-  content: string;
+  content: string | ReactNode;
   css: string;
 }
 
